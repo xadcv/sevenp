@@ -14,28 +14,48 @@ def human_format(num):
 
 
 st.title("Dial Manipulatoor")
-tit1, tit2 = st.columns(2)
-tit1.subheader("Market Scale")
-tit2.subheader("Power")
+st.text("Source: 7 Powers - Hamilton Helmer")
+st.latex(
+    r"""
+V = M_0 \space g \space \bar{s} \space \bar{m}
+"""
+)
+st.text("Where g is the terminal value factor (1+g)/(r-g)")
+col_left, col_right = st.columns(2)
+col_left.subheader("Inputs to Market Scale")
+col_right.subheader("Inputs to Power")
 
-set1, set2 = st.columns(2)
-m0 = set1.number_input("Current Market Size (bn USD)", min_value=0.0, value=400.0)
-g = set2.slider("Discounted growth factor", min_value=0.0, value=10.0)
+m0 = col_left.number_input("Current Market Size (bn USD)", min_value=0.0, value=400.0)
+coc = col_left.slider("Cost of capital", min_value=0.0, max_value=100.0, value=20.0)
+eta = col_left.slider(
+    "Long-term revenue growth", min_value=0.0, max_value=coc, value=5.0
+)
+g = (1 + eta / 100.0) / (coc / 100.0 - eta / 100.0)
+# g = col_right.slider("Discounted growth factor", min_value=0.0, value=10.0)
 
-set3, set4 = st.columns(2)
-s = set3.slider("Long-term Market Share", min_value=0.0, max_value=100.0, value=30.0)
-m = set4.slider(
+s = col_right.slider(
+    "Long-term Market Share", min_value=0.0, max_value=100.0, value=30.0
+)
+m = col_right.slider(
     "Long-term Net Profit Margin > Cost of Capital",
     min_value=0.0,
     max_value=20.0,
     value=10.0,
 )
 
+col_left2, col_right2 = st.columns(2)
+col_left2.subheader("Market Scale")
+col_left2.metric(
+    "Contribution to market scale growth over inf",
+    value=human_format(m0 * 1_000_000_000.0 * g),
+)
+col_right2.subheader("Power")
+col_right2.metric(
+    "Long-term market extractive power", value="{:.1%}".format(s / 100 * m / 100)
+)
+
+
 val = m0 * 1_000_000_000.0 * g * s / 100 * m / 100
 s1, s2, s3 = st.columns(3)
-s2.latex(
-    r"""
-V = M_0 \space g \space \bar{s} \space \bar{m}
-"""
-)
-s2.metric(label="Value", value=human_format(val))
+s2.subheader("Value")
+s2.metric(label="Long-term value accretion potential", value=human_format(val))
