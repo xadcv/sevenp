@@ -20,7 +20,7 @@ st.latex(
 V = M_0 \space g \space \bar{s} \space \bar{m}
 """
 )
-st.text("Where g is the terminal value factor (1+g)/(r-g)")
+st.text("Where g is the terminal value groth factor (1+g)/(r-g)")
 col_left, col_right = st.columns(2)
 col_left.subheader("Inputs to Market Scale")
 col_right.subheader("Inputs to Power")
