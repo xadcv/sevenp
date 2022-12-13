@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
+from PIL import Image
 
 
 def human_format(num):
@@ -16,7 +17,7 @@ def human_format(num):
     )
 
 
-st.title("Dial Manipulatoor")
+st.title("Effects of Various Strategic Powers")
 st.markdown("Source: 7 Powers - Hamilton Helmer")
 
 with st.expander("Fundamental Market Power Equation"):
@@ -219,3 +220,7 @@ with st.expander("Branding"):
 
     st.altair_chart(brand1, use_container_width=True)
     st.altair_chart(brand2, use_container_width=True)
+
+with st.expander("Overview of the 7 Strategic Powers"):
+    image = Image.open("diagram.png")
+    st.image(image, caption="Summary of the 7 Strategic Powers")
