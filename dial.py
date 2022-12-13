@@ -147,7 +147,7 @@ with st.expander("2. Network economies"):
     st.altair_chart(network2, use_container_width=True)
 
 st.subheader("5. Branding")
-with st.expander("5. Branding"):
+with st.expander("Branding"):
     st.latex(
         r"""
         B(t)=\frac{Z}{(1+(z-1)e^{-Ft}}*D_t*U_t
