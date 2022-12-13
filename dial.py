@@ -18,7 +18,7 @@ def human_format(num):
 
 st.title("Dial Manipulatoor")
 st.markdown("Source: 7 Powers - Hamilton Helmer")
-st.subheader("Fundamental Market Power Equation")
+
 with st.expander("Fundamental Market Power Equation"):
     st.latex(
         r"""
@@ -66,8 +66,8 @@ with st.expander("Fundamental Market Power Equation"):
     s2.subheader("Value")
     s2.metric(label="Long-term value accretion potential", value=human_format(val))
 
-st.subheader("2. Network economies")
-with st.expander("2. Network economies"):
+
+with st.expander("Network economies"):
     st.latex(
         r"""
     SLM = 1-1/[\frac{\delta}{c}(N_s-N_w)+1]
@@ -146,7 +146,6 @@ with st.expander("2. Network economies"):
     st.altair_chart(network1, use_container_width=True)
     st.altair_chart(network2, use_container_width=True)
 
-st.subheader("5. Branding")
 with st.expander("Branding"):
     st.latex(
         r"""
