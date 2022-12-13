@@ -18,6 +18,7 @@ def human_format(num):
 
 st.title("Dial Manipulatoor")
 st.markdown("Source: 7 Powers - Hamilton Helmer")
+st.header("1. Scale Economies")
 with st.expander("1. Scale Economies"):
     st.latex(
         r"""
@@ -65,6 +66,7 @@ with st.expander("1. Scale Economies"):
     s2.subheader("Value")
     s2.metric(label="Long-term value accretion potential", value=human_format(val))
 
+st.header("2. Network economies")
 with st.expander("2. Network economies"):
     st.latex(
         r"""
@@ -144,6 +146,7 @@ with st.expander("2. Network economies"):
     st.altair_chart(network1, use_container_width=True)
     st.altair_chart(network2, use_container_width=True)
 
+st.header("5. Branding")
 with st.expander("5. Branding"):
     st.latex(
         r"""
