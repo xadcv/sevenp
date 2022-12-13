@@ -101,9 +101,7 @@ with st.expander("Network economies"):
         max_value=0.50,
         value=0.50,
     )
-    nw = st.number_input(
-        "Nw: Quantity of users in underdog", min_value=0.0, value=100.0
-    )
+    nw = st.number_input("Nw: Quantity of users in underdog", min_value=0.0, value=10.0)
 
     df = pd.DataFrame({"nw": np.repeat(nw, 1000)})
     share = np.arange(lowshare, hishare, (hishare - lowshare) / (df.shape[0]))
